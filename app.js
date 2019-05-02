@@ -14,10 +14,15 @@ app.use(cors({origin: true, credentials: true})) // <= Disable if you don't need
 
 // TODO: ADD (MOUNT) YOUR MIDDLEWARE (ROUTES) HERE:
 // Example: app.use('/api/cat', require('./routes/cat'))
+app.get('/', (req,res) =>{
+  res.send(`Running on port ${port}`)
+})
 
 // The following 2 `app.use`'s MUST follow ALL your routes/middleware
 app.use(notFound)
 app.use(errorHandler)
+
+
 
 function notFound(req, res, next) {
   res.status(404).send({error: 'Not found!', status: 404, url: req.originalUrl})
