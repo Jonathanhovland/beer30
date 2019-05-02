@@ -3,19 +3,21 @@ const bodyParser  = require('body-parser')
 const morgan      = require('morgan')
 const cors        = require('cors')
 const app         = module.exports = express()
-const port        = parseInt(process.env.PORT || 3000)
+const port        = parseInt(process.env.PORT || 3007)
+
+const barRoutes = require("./routes/bar")
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors({origin: true, credentials: true})) // <= Disable if you don't need CORS
-// TODO: Optional Static file handler:
-// app.use('/', express.static('./build'))
 
-// TODO: ADD (MOUNT) YOUR MIDDLEWARE (ROUTES) HERE:
-// Example: app.use('/api/cat', require('./routes/cat'))
+app.get("/", (req, res) => res.json({
+    "bar": "http://localhost:3007/bar",
+}));
 
-// The following 2 `app.use`'s MUST follow ALL your routes/middleware
+app.use("/bar", barRoutes)
+
 app.use(notFound)
 app.use(errorHandler)
 
@@ -30,6 +32,4 @@ function errorHandler(err, req, res, next) {
   res.status(500).send({error: err.message, stack, url: req.originalUrl})
 }
 
-app.listen(port)
-  .on('error',     console.error.bind(console))
-  .on('listening', console.log.bind(console, 'Listening on http://0.0.0.0:' + port))
+app.listen(port, () => console.log("server is running on port 3007"))
