@@ -21,6 +21,8 @@ app.use("/bar", barRoutes)
 app.use(notFound)
 app.use(errorHandler)
 
+
+
 function notFound(req, res, next) {
   res.status(404).send({error: 'Not found!', status: 404, url: req.originalUrl})
 }
