@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const knex = require("../db/connection")
 
+
 //Get all route
 router.get("/", (req, res, next) => {
     knex("bar")
@@ -25,6 +26,18 @@ router.get('/:id', (req,res,next) =>{
       }
     })
   })
+
+//Post
+router.post("/", (req, res, next) => {
+  const body = req.body
+ 
+  knex("bar")
+    .insert(body)
+    .returning("*")
+    .then(bar => {
+      res.json({ bar: bar[0] })
+    })
+ })
 
 module.exports = router
 
