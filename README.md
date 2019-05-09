@@ -4,6 +4,6 @@ Back-End
 
 Node.js/Express.js/PostgreSQL/Knex.js
 
-<img width="842" alt="beer30erd" src="https://user-images.githubusercontent.com/40579877/57475887-92f62380-7252-11e9-9eb8-99e7e66082b3.png">
+<img width="1034" alt="beer30erd" src="https://user-images.githubusercontent.com/40579877/57476425-c7b6aa80-7253-11e9-9261-49b7d478636b.png">
 
 
