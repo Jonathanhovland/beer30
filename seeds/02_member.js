@@ -9,14 +9,16 @@ exports.seed = function(knex, Promise) {
         email: 'jonathan.hovland@yahoo.com',
         password: "Iliketoparty69",
         avatar: "https://resizing.flixster.com/BqGucmfSISrENYSstYSbAIVfYOk=/300x300/v1.aDszMDYzO2o7MTc5NTU7MTIwMDs0Njc7NzAw",
-        fav_drink: "Coors"
+        fav_drink: "Coors",
+        friends: 1
       }, {
         id: 2,
         name: 'Jody Isaguirre',
         email: 'jodyisaguirre@gmail.com',
         password: "Hardpass",
         avatar: "https://pbs.twimg.com/media/DVo81-dUQAA349x.jpg",
-        fav_drink: "Corona"
+        fav_drink: "Corona",
+        friends: 1
       }];
       return knex('member').insert(members);
     });

@@ -12,13 +12,12 @@ exports.seed = function(knex, Promise) {
         check_out: '2019-02-13 21:11:00',
         favorite: true,
         rating: 5,
-        games: 1,
-        food: 1,
-        price: 1,
+        affordable: 1,
+        service: 1,
         crowd: 1,
         music: 1,
-        service: 1,
-        romantic: 0,
+        food: 1,
+        games: 0
       }];
       return knex('bar_member').insert(bar_members);
     });

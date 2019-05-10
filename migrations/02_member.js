@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('password').notNullable();
     table.string('avatar').notNullable();
     table.string('fav_drink').notNullable();
+    table.integer('friend_id').references('friendship.id').unsigned().onDelete('cascade')
     })
   };
   

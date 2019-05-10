@@ -4,18 +4,17 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('member_id').references('id').inTable('member').onDelete('cascade')
     table.integer('bar_id').references('id').inTable('bar').onDelete('cascade')
-    table.string('date').notNullable();
-    table.string('check_in').notNullable();
-    table.string('check_out').notNullable();
+    table.date('date').notNullable();
+    table.datetime('check_in').notNullable();
+    table.datetime('check_out').notNullable();
     table.boolean('favorite').notNullable();
     table.integer('rating').notNullable();
-    table.integer('games').notNullable();
-    table.integer('food').notNullable();
-    table.integer('price').notNullable();
+    table.integer('affordable').notNullable();
+    table.integer('service').notNullable();
     table.integer('crowd').notNullable();
     table.integer('music').notNullable();
-    table.integer('service').notNullable();
-    table.integer('romantic').notNullable();
+    table.integer('food').notNullable();
+    table.integer('games').notNullable();
     })
   };
   
