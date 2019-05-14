@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('DELETE FROM "friend"; ALTER SEQUENCE friend_id_seq RESTART WITH 2;')
+  return knex.raw('DELETE FROM "friendship"; ALTER SEQUENCE friendship_id_seq RESTART WITH 2;')
     .then(function () {
       var friends = [{
         id: 1,
@@ -9,6 +9,6 @@ exports.seed = function(knex, Promise) {
         friend_member_id: 2,
         pending_friendship: false,
       }];
-      return knex('friend').insert(friends);
+      return knex('friendship').insert(friends);
     });
 };
