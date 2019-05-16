@@ -2,6 +2,26 @@ const express = require("express")
 const router = express.Router()
 const knex = require("../db/connection")
 
+//Get all members route
+router.get("/", (req, res, next) => {
+    knex("member")
+        .orderBy("id", "asc")
+        .then(members => {
+            res.json({ members })
+        })
+})
+
+//Get a member route
+router.get("/:id", (req, res, next) => {
+    const id = req.params.id
+    knex("member")
+        .where("id", id)
+        .then((member) =>{
+            res.json({member: member[0]})
+        })
+})
+
+//Get Friendship List
 router.get("/:id/friendship", async (req, res, next) => {
     // Capture current member's id from request
     const memberId = req.params.id

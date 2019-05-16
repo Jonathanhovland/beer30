@@ -14,7 +14,7 @@ app.use(morgan(process.env.NODE_ENV !== 'production' ? 'dev' : 'combined'))
 app.use(cors())
 
 app.get("/", (req, res) => res.json({
-    "bar": "http://localhost:3000/bar",
+    "bars": "http://localhost:3000/bars",
 }));
 
 app.use("/bars", barRoutes)
