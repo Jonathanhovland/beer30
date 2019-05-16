@@ -2,8 +2,8 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('friendship', (table) =>{
     table.increments();
-    table.integer('current_member_id').references('id').inTable('member').onDelete('cascade')
-    table.integer('friend_member_id').references('id').inTable('member').onDelete('cascade')
+    table.integer('friend_1_id').references('id').inTable('member').onDelete('cascade')
+    table.integer('friend_2_id').references('id').inTable('member').onDelete('cascade')
     table.boolean('pending_friendship').notNullable();
     })
   };

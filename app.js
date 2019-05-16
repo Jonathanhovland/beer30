@@ -6,6 +6,7 @@ const cors = require("cors")
 const port = process.env.PORT || 3000
 
 const barRoutes = require("./routes/bar")
+const memberRoutes = require("./routes/member")
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,7 +17,8 @@ app.get("/", (req, res) => res.json({
     "bar": "http://localhost:3000/bar",
 }));
 
-app.use("/bar", barRoutes)
+app.use("/bars", barRoutes)
+app.use("/members", memberRoutes)
 
 app.use(notFound)
 
