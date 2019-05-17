@@ -15,10 +15,11 @@ router.get("/", (req, res, next) => {
 //Get one bar route
 router.get('/:id', (req,res,next) =>{
   const id = req.params.id
+
   knex('bar')
   .where('id',id)
   .then((bar) =>{
-    res.json({bar: bar[0]})
+    res.json({ bar: bar[0] })
   })
 })
 
@@ -34,7 +35,7 @@ router.post("/", (req, res, next) => {
     })
  })
 
-//Edit an existing route
+//Edit an existing bar route
 router.put("/:id", (req, res) => {
   const id = req.params.id
   const body = req.body
@@ -43,8 +44,8 @@ router.put("/:id", (req, res) => {
     .where("id", id)
     .update(body)
     .returning("*")
-    .then(updatedbar => {
-      res.json({ bar: updatedbar[0] })
+    .then(updatedBar => {
+      res.json({ bar: updatedBar[0] })
     })
   })
 
@@ -56,8 +57,8 @@ router.delete("/:id", (req, res) => {
     .where("id", id)
     .delete()
     .returning("*")
-    .then(deletedbar => {
-      res.json({ bar: deletedbar[0] })
+    .then(updatedBars => {
+      res.json({ bar: updatedBars[0] })
     })
 })
 

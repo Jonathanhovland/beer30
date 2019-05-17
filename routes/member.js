@@ -14,10 +14,38 @@ router.get("/", (req, res, next) => {
 //Get a member route
 router.get("/:id", (req, res, next) => {
     const id = req.params.id
+    
     knex("member")
         .where("id", id)
         .then((member) =>{
-            res.json({member: member[0]})
+            res.json({ member: member[0] })
+        })
+})
+
+//Edit an existing member route
+router.put("/:id", (req, res) => {
+    const id = req.params.id
+    const body = req.body
+    
+    knex("member")
+      .where("id", id)
+      .update(body)
+      .returning("*")
+      .then(updatedMember => {
+        res.json({ bar: updatedMember[0] })
+      })
+    })
+
+//Delete a member route
+router.delete("/:id", (req, res, next) => {
+    const id = req.params.id
+
+    knex("member")
+        .where("id", id)
+        .delete()
+        .returning("*")
+        .then(updatedMembers => {
+            res.json({ member: updatedMembers[0] })
         })
 })
 
